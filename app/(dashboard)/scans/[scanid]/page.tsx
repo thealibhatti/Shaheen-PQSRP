@@ -31,6 +31,14 @@ import {
   getRiskLevelBgColor,
 } from '@/lib/utils';
 
+export async function generateStaticParams() {
+  return Array.from({ length: 50 }, (_, i) => ({
+    scanid: String(i + 1),
+  }));
+}
+
+export const dynamicParams = false;
+
 export default function ScanDetailPage() {
   const params = useParams();
   const router = useRouter();
