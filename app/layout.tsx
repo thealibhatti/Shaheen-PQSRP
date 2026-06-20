@@ -13,8 +13,12 @@ export const metadata: Metadata = {
 const themeInitScript = `
 (function() {
   try {
-    var theme = localStorage.getItem('shaheen-theme');
-    if (!theme) { theme = 'dark'; }
+    var themeInit = localStorage.getItem('shaheen-theme-v3');
+    if (!themeInit) {
+      localStorage.setItem('shaheen-theme', 'dark');
+      localStorage.setItem('shaheen-theme-v3', 'true');
+    }
+    var theme = localStorage.getItem('shaheen-theme') || 'dark';
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
@@ -25,6 +29,7 @@ const themeInitScript = `
   }
 })();
 `;
+
 
 export default function RootLayout({
   children,
